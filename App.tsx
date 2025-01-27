@@ -6,11 +6,7 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import HomePage from './src/pages/homePage';
 
 
 
@@ -19,17 +15,9 @@ function App(): React.JSX.Element {
 
 
   return (
-   <SafeAreaView style={styles.sectionContainer}>
-    <Text>Homepage</Text>
-   </SafeAreaView>
+   <HomePage/>
   );
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-});
 
 export default App;
