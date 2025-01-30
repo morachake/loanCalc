@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react"
 import { SafeAreaView, StyleSheet, Modal, View, Text, TouchableOpacity } from "react-native"
 import LoanForm from "./LoanForm"

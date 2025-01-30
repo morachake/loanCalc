@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native"
 import { useAppContext } from "../context/AppContext"
 import { LoanFormData } from "../types/types"

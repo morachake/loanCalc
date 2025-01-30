@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from "react-native"
 import type { AmortizationEntry } from "../types/types"
 
@@ -9,7 +10,6 @@ export default function Table({ data }: TableProps) {
   return (
     <ScrollView horizontal style={styles.tableContainer}>
       <View>
-        {/* Header Row */}
         <View style={styles.headerRow}>
           <Text style={[styles.headerCell, styles.numberCell]}>No.</Text>
           <Text style={[styles.headerCell, styles.balanceCell]}>Start</Text>
@@ -18,7 +18,6 @@ export default function Table({ data }: TableProps) {
           <Text style={[styles.headerCell, styles.balanceCell]}>End</Text>
         </View>
 
-        {/* Data Rows */}
         {data.map((entry, index) => (
           <View key={entry.payment_number} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>
             <Text style={[styles.cell, styles.numberCell]}>{entry.payment_number}</Text>

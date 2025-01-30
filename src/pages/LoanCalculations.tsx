@@ -1,3 +1,4 @@
+import React from "react"
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from "react-native"
 import { useAppContext } from "../context/AppContext"
 import Table from "../components/Table"
