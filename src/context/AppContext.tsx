@@ -1,5 +1,6 @@
+import React from "react"
 import { createContext, useState, useContext, type ReactNode } from "react"
-import type { LoanFormData, LoanCalculationResult, AppContextType } from "../types"
+import type { LoanFormData, LoanCalculationResult, AppContextType } from "../types/types"
 
 const AppContext = createContext<AppContextType | undefined>(undefined)
 
