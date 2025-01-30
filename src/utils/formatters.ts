@@ -66,26 +66,26 @@ export const formatCurrency = (value: string | number | undefined | null, defaul
     {
       id: 1,
       name: "Equity",
-      interestRate: 3.5,
+      interestRate: 18.5,
     },
     {
       id: 2,
       name: "NCBA",
-      interestRate: 3.25,
+      interestRate: 19.25,
     },
     {
       id: 3,
       name: "STANBIC",
-      interestRate: 3.75,
+      interestRate: 15.75,
     },
     {
       id: 4,
       name: "KCB",
-      interestRate: 3.6,
+      interestRate: 17.6,
     },
     {
       id: 5,
       name: "DTB",
-      interestRate: 3.45,
+      interestRate: 16.45,
     },
   ]

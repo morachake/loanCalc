@@ -37,11 +37,11 @@ export default function Table({ data, paymentFrequency }: TableProps) {
         {/* Header Row */}
         <View style={styles.headerRow}>
           <Text style={[styles.headerCell, styles.numberCell]}>No</Text>
-          <Text style={[styles.headerCell, styles.balanceCell]}>Start Balance</Text>
+          <Text style={[styles.headerCell, styles.balanceCell]}>Start</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Payment</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Principal</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Interest</Text>
-          <Text style={[styles.headerCell, styles.balanceCell]}>End Balance</Text>
+          <Text style={[styles.headerCell, styles.balanceCell]}>End </Text>
         </View>
 
         {/* Data Rows */}

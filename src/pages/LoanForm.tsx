@@ -68,20 +68,8 @@ export default function LoanForm({ onClose }: LoanFormProps) {
     const newErrors: Partial<Record<keyof LoanFormData, string>> = {}
     let isValid = true
 
-    if (!formData.bank) {
-      newErrors.bank = "Bank is required"
-      isValid = false
-    }
-    if (!formData.loan_amount) {
-      newErrors.loan_amount = "Loan amount is required"
-      isValid = false
-    }
-    if (!formData.loan_term_years && !formData.loan_term_months) {
-      newErrors.loan_term_years = "Loan term is required"
-      isValid = false
-    }
-    if (!formData.interest_rate) {
-      newErrors.interest_rate = "Interest rate is required"
+    if (!formData.bank && !formData.loan_amount && !formData.loan_term_years && !formData.loan_term_months && !formData.interest_rate) {
+      newErrors.bank = "Field Is Required"
       isValid = false
     }
 
@@ -196,7 +184,7 @@ export default function LoanForm({ onClose }: LoanFormProps) {
       {loading ? (
         <ActivityIndicator size="large" color="#3498DB" style={styles.loader} />
       ) : (
-        <TouchableOpacity style={styles.calculateButton} onPress={handleSubmit}>
+        <TouchableOpacity style={styles.calculateButton} onPress={handleSubmit} >
           <Text style={styles.calculateButtonText}>Calculate</Text>
         </TouchableOpacity>
       )}
