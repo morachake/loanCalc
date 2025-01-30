@@ -1,25 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import HomePage from './src/pages/HomePage';
-import { NavigationContainer } from '@react-navigation/native';
+import type React from "react"
+import { AppProvider } from "./src/context/AppContext"
+import HomePage from "./src/pages/HomePage"
 
 
-
-function App(): React.JSX.Element {
-
-
+const App: React.FC = () => {
   return (
-    <NavigationContainer>
-           <HomePage/>
-    </NavigationContainer>
-  );
+    <AppProvider>
+      <HomePage />
+    </AppProvider>
+  )
 }
 
+export default App
 
-export default App;
