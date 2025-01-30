@@ -1,7 +1,6 @@
 import React from "react"
 import { View, Text, StyleSheet, ScrollView } from "react-native"
-import { AmortizationEntry } from "../types/types"
-
+import type { AmortizationEntry } from "../types/types"
 
 interface TableProps {
   data: AmortizationEntry[]
@@ -37,12 +36,12 @@ export default function Table({ data, paymentFrequency }: TableProps) {
       <View>
         {/* Header Row */}
         <View style={styles.headerRow}>
-          <Text style={[styles.headerCell, styles.numberCell]}>No.</Text>
-          <Text style={[styles.headerCell, styles.balanceCell]}>Beginning Balance</Text>
+          <Text style={[styles.headerCell, styles.numberCell]}>No</Text>
+          <Text style={[styles.headerCell, styles.balanceCell]}>Start Balance</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Payment</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Principal</Text>
           <Text style={[styles.headerCell, styles.amountCell]}>Interest</Text>
-          <Text style={[styles.headerCell, styles.balanceCell]}>Ending Balance</Text>
+          <Text style={[styles.headerCell, styles.balanceCell]}>End Balance</Text>
         </View>
 
         {/* Data Rows */}
@@ -75,16 +74,16 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: "row",
-    backgroundColor: "#007AFF",
-    paddingVertical: 12,
+    backgroundColor: "#3498DB",
+    paddingVertical: 8,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
   row: {
     flexDirection: "row",
-    paddingVertical: 12,
+    paddingVertical: 5,
     borderBottomWidth: 1,
-    borderBottomColor: "#E5E5E5",
+    borderBottomColor: "#ECF0F1",
   },
   evenRow: {
     backgroundColor: "#F8F9FA",
@@ -99,10 +98,10 @@ const styles = StyleSheet.create({
   },
   cell: {
     fontSize: 14,
-    color: "#333333",
+    color: "#2C3E50",
   },
   numberCell: {
-    width: 50,
+    width: 20,
     textAlign: "center",
   },
   balanceCell: {
@@ -116,14 +115,14 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   yearSeparator: {
-    backgroundColor: "#E0E0E0",
+    backgroundColor: "#ECF0F1",
     paddingVertical: 8,
     paddingHorizontal: 15,
   },
   yearSeparatorText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333",
+    color: "#2C3E50",
   },
 })
 

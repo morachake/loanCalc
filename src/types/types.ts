@@ -37,7 +37,13 @@ export interface LoanCalculationResult {
   payment_amount: string
   total_payments: number
   total_interest: string
+  total_cost: string
   amortization_schedule: AmortizationEntry[]
+  annual_rate: number
+  loan_term_years: number
+  loan_term_months: number
+  loan_amount: string
+  payment_frequency: string
 }
 
 export interface AppContextType {
@@ -47,20 +53,3 @@ export interface AppContextType {
   calculateLoan: (formData: LoanFormData) => Promise<void>
 }
 
-export interface CustomDropdownOption {
-  label: string
-  value: string
-}
-
-
-export interface CustomDropdownProps {
-  options: Option[]
-  selectedValue: string
-  onValueChange: (value: string) => void
-  placeholder: string
-}
-
-export interface Option {
-  label: string
-  value: string
-}

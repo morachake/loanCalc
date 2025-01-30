@@ -4,10 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-nati
 import { CustomDropdownProps } from "../types/types"
 
 
-
-
-
-export default function CustomDropdown ({ options, selectedValue, onValueChange, placeholder }: CustomDropdownProps ) { 
+export default function CustomDropdown({ options, selectedValue, onValueChange, placeholder }: CustomDropdownProps)  {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDropdown = () => setIsOpen(!isOpen)
@@ -42,31 +39,33 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   header: {
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#BDC3C7",
   },
   headerText: {
     fontSize: 16,
-    color: "#333",
+    color: "#2C3E50",
   },
   optionsList: {
     maxHeight: 200,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#BDC3C7",
     borderRadius: 5,
     marginTop: 5,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
   },
   option: {
     padding: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    borderBottomColor: "#ECF0F1",
   },
   optionText: {
     fontSize: 16,
-    color: "#333",
+    color: "#2C3E50",
   },
 })
+
+

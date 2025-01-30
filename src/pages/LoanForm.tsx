@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import { Text, TextInput, Button, StyleSheet, TouchableOpacity, View, ActivityIndicator, ScrollView } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from "react-native"
 import { useAppContext } from "../context/AppContext"
-import type { LoanFormData } from "../types/types"
+import { LoanFormData } from "../types/types"
 import CustomDropdown from "../components/CustomDropDown"
+
 
 interface LoanFormProps {
   onClose: () => void
@@ -127,7 +128,7 @@ export default function LoanForm({ onClose }: LoanFormProps) {
         />
       </View>
       {loading ? (
-        <ActivityIndicator size="large" color="#007AFF" style={styles.loader} />
+        <ActivityIndicator size="large" color="#3498DB" style={styles.loader} />
       ) : (
         <TouchableOpacity style={styles.calculateButton} onPress={handleSubmit}>
           <Text style={styles.calculateButtonText}>Calculate</Text>
@@ -139,11 +140,11 @@ export default function LoanForm({ onClose }: LoanFormProps) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    backgroundColor: "#fff",
+    padding: 20,
+    backgroundColor: "#F0F4F8",
     borderRadius: 10,
     width: "90%",
-    maxHeight: "85%",
+    maxHeight: "80%",
   },
   closeButton: {
     alignSelf: "flex-end",
@@ -152,14 +153,14 @@ const styles = StyleSheet.create({
   closeButtonText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#333",
+    color: "#2C3E50",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    color: "#333",
+    color: "#2C3E50",
   },
   inputContainer: {
     marginBottom: 15,
@@ -174,28 +175,29 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 5,
-    color: "#555",
+    color: "#34495E",
   },
   input: {
     height: 40,
-    borderColor: "#ccc",
+    borderColor: "#BDC3C7",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
     fontSize: 16,
+    backgroundColor: "#FFFFFF",
   },
   loader: {
     marginTop: 20,
   },
   calculateButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "#3498DB",
     padding: 15,
     borderRadius: 5,
     alignItems: "center",
     marginTop: 20,
   },
   calculateButtonText: {
-    color: "#fff",
+    color: "#FFFFFF",
     fontSize: 18,
     fontWeight: "bold",
   },
