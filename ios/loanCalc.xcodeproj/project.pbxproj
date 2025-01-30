@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2E32E6FECCB24C28BC0F756C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3951F2A567544334AA11D703 /* Colors.xcassets */; };
 		54A5B8707581AC734278B240 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		79F0EE36EC2D4F05A7EB7CEB /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A242129475E34CF0881A7808 /* BootSplash.storyboard */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D3E3A33F61A8E21FFDCA90EF /* libPods-loanCalc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F79D412BB1FE317294BC5C7F /* libPods-loanCalc.a */; };
 /* End PBXBuildFile section */
@@ -19,9 +21,11 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = loanCalc/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = loanCalc/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = loanCalc/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3951F2A567544334AA11D703 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = loanCalc/Colors.xcassets; sourceTree = "<group>"; };
 		4A2FD486D70225BA2DB612F0 /* Pods-loanCalc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loanCalc.release.xcconfig"; path = "Target Support Files/Pods-loanCalc/Pods-loanCalc.release.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = loanCalc/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = loanCalc/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A242129475E34CF0881A7808 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = loanCalc/BootSplash.storyboard; sourceTree = "<group>"; };
 		CB6CF82E17B6B2C60E20C560 /* Pods-loanCalc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loanCalc.debug.xcconfig"; path = "Target Support Files/Pods-loanCalc/Pods-loanCalc.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F79D412BB1FE317294BC5C7F /* libPods-loanCalc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-loanCalc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +51,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				A242129475E34CF0881A7808 /* BootSplash.storyboard */,
+				3951F2A567544334AA11D703 /* Colors.xcassets */,
 			);
 			name = loanCalc;
 			sourceTree = "<group>";
@@ -161,6 +167,8 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				54A5B8707581AC734278B240 /* PrivacyInfo.xcprivacy in Resources */,
+				79F0EE36EC2D4F05A7EB7CEB /* BootSplash.storyboard in Resources */,
+				2E32E6FECCB24C28BC0F756C /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,8 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import RNBootSplash // ⬅️ add this import
+
 
 @main
 class AppDelegate: RCTAppDelegate {
@@ -19,7 +21,12 @@ class AppDelegate: RCTAppDelegate {
   override func sourceURL(for bridge: RCTBridge) -> URL? {
     self.bundleURL()
   }
-
+   // ⬇️ override this method
+  override func customize(_ rootView: RCTRootView!) {
+    super.customize(rootView)
+    RNBootSplash.initWithStoryboard("BootSplash", rootView: rootView) // ⬅️ initialize the splash screen
+  }
+  
   override func bundleURL() -> URL? {
 #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
