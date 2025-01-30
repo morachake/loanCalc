@@ -1,16 +1,9 @@
-import { SafeAreaView, StyleSheet, Text } from "react-native"
+import Calculator from "./Calculator";
 
-export default function HomePage () {
-    return (
-        <SafeAreaView style={stles.sectionContainer}>
-            <Text>Homepage</Text>
-        </SafeAreaView>
-    )
+export default function HomePage() {
+    return(
+    <>
+       <Calculator/>
+    </>    
+)
 }
-
-const stles = StyleSheet.create({
-    sectionContainer: {
-        marginTop: 32,
-        paddingHorizontal: 24,
-    }
-})

@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import HomePage from './src/pages/homePage';
+import HomePage from './src/pages/HomePage';
 
 
 
