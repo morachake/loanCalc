@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from "react-nat
 import { useAppContext } from "../context/AppContext"
 import Table from "../components/Table"
 
-
 export default function LoanCalculations() {
   const { loanData, loading, error } = useAppContext()
 
@@ -36,7 +35,7 @@ export default function LoanCalculations() {
       <View style={styles.summaryCard}>
         <Text style={styles.title}>Loan Summary</Text>
         <Text style={styles.summaryItem}>
-          Monthly Payment: <Text style={styles.summaryValue}>{loanData.monthly_payment}</Text>
+          Payment Amount: <Text style={styles.summaryValue}>{loanData.payment_amount}</Text>
         </Text>
         <Text style={styles.summaryItem}>
           Total Payments: <Text style={styles.summaryValue}>{loanData.total_payments}</Text>
@@ -48,7 +47,7 @@ export default function LoanCalculations() {
 
       <Text style={styles.subtitle}>Amortization Schedule</Text>
       {loanData.amortization_schedule && loanData.amortization_schedule.length > 0 && (
-        <Table data={loanData.amortization_schedule} />
+        <Table data={loanData.amortization_schedule} paymentFrequency={loanData.payment_frequency} />
       )}
     </ScrollView>
   )
