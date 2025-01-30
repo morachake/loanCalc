@@ -7,7 +7,7 @@
 
 import React from 'react';
 import HomePage from './src/pages/HomePage';
-
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
@@ -15,7 +15,9 @@ function App(): React.JSX.Element {
 
 
   return (
-   <HomePage/>
+    <NavigationContainer>
+           <HomePage/>
+    </NavigationContainer>
   );
 }
 
