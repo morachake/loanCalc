@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator, Alert } from "react-native"
 import { useAppContext } from "../context/AppContext"
+import { Banks } from "../utils/formatters"
 import { LoanFormData } from "../types/types"
 import CustomDropdown from "../components/CustomDropDown"
-
 
 interface LoanFormProps {
   onClose: () => void
@@ -31,6 +31,11 @@ const paymentFrequencyOptions = [
   { label: "Annually", value: "ANNUALLY" },
 ]
 
+const bankOptions = [
+  ...Banks.map((bank) => ({ label: bank.name, value: bank.name })),
+  { label: "Other", value: "OTHER" },
+]
+
 export default function LoanForm({ onClose }: LoanFormProps) {
   const { calculateLoan, loading } = useAppContext()
   const [formData, setFormData] = useState<LoanFormData>({
@@ -42,30 +47,88 @@ export default function LoanForm({ onClose }: LoanFormProps) {
     compound_period: "MONTHLY_APR",
     payment_frequency: "EVERY_MONTH",
   })
+  const [errors, setErrors] = useState<Partial<Record<keyof LoanFormData, string>>>({})
 
   const handleChange = (name: keyof LoanFormData, value: string) => {
     setFormData((prevState) => ({ ...prevState, [name]: value }))
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }))
+  }
+
+  const handleBankChange = (value: string) => {
+    const selectedBank = Banks.find((bank) => bank.name === value)
+    setFormData((prevState) => ({
+      ...prevState,
+      bank: value,
+      interest_rate: selectedBank ? selectedBank.interestRate.toString() : prevState.interest_rate,
+    }))
+    setErrors((prevErrors) => ({ ...prevErrors, bank: "" }))
+  }
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<Record<keyof LoanFormData, string>> = {}
+    let isValid = true
+
+    if (!formData.bank) {
+      newErrors.bank = "Bank is required"
+      isValid = false
+    }
+    if (!formData.loan_amount) {
+      newErrors.loan_amount = "Loan amount is required"
+      isValid = false
+    }
+    if (!formData.loan_term_years && !formData.loan_term_months) {
+      newErrors.loan_term_years = "Loan term is required"
+      isValid = false
+    }
+    if (!formData.interest_rate) {
+      newErrors.interest_rate = "Interest rate is required"
+      isValid = false
+    }
+
+    setErrors(newErrors)
+    return isValid
   }
 
   const handleSubmit = async () => {
-    await calculateLoan(formData)
-    onClose()
+    if (validateForm()) {
+      await calculateLoan(formData)
+      onClose()
+    } else {
+      Alert.alert("Form Error", "Please fill in all required fields.")
+    }
   }
 
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-        <Text style={styles.closeButtonText}>×</Text>
-      </TouchableOpacity>
-      <Text style={styles.title}>New Loan Calculation</Text>
+
+      <View style={{
+        justifyContent: "space-between", 
+        alignItems: 'center', 
+        flexDirection: 'row',
+        marginBottom: 20
+        }}>
+          <Text style={styles.title}>New Calculation</Text>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Text style={styles.closeButtonText}>×</Text>
+          </TouchableOpacity>
+      </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Bank Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter bank name"
-          value={formData.bank}
-          onChangeText={(text) => handleChange("bank", text)}
+        <Text style={styles.label}>Bank</Text>
+        <CustomDropdown
+          options={bankOptions}
+          selectedValue={formData.bank}
+          onValueChange={handleBankChange}
+          placeholder="Select a bank"
         />
+        {errors.bank && <Text style={styles.errorText}>{errors.bank}</Text>}
+        {formData.bank === "OTHER" && (
+          <TextInput
+            style={[styles.input, { marginTop: 10 ,flex: 1}]}
+            placeholder="Enter bank name"
+            value={formData.bank === "OTHER" ? "" : formData.bank}
+            onChangeText={(text) => handleChange("bank", text)}
+          />
+        )}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Loan Amount</Text>
@@ -76,6 +139,7 @@ export default function LoanForm({ onClose }: LoanFormProps) {
           onChangeText={(text) => handleChange("loan_amount", text)}
           keyboardType="numeric"
         />
+        {errors.loan_amount && <Text style={styles.errorText}>{errors.loan_amount}</Text>}
       </View>
       <View style={styles.rowContainer}>
         <View style={[styles.inputContainer, styles.halfWidth]}>
@@ -99,6 +163,7 @@ export default function LoanForm({ onClose }: LoanFormProps) {
           />
         </View>
       </View>
+      {errors.loan_term_years && <Text style={styles.errorText}>{errors.loan_term_years}</Text>}
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Interest Rate (%)</Text>
         <TextInput
@@ -108,6 +173,7 @@ export default function LoanForm({ onClose }: LoanFormProps) {
           onChangeText={(text) => handleChange("interest_rate", text)}
           keyboardType="numeric"
         />
+        {errors.interest_rate && <Text style={styles.errorText}>{errors.interest_rate}</Text>}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Compound Period</Text>
@@ -141,14 +207,14 @@ export default function LoanForm({ onClose }: LoanFormProps) {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: "#F0F4F8",
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     width: "90%",
-    maxHeight: "80%",
+    maxHeight: "70%",
   },
   closeButton: {
-    alignSelf: "flex-end",
-    padding: 10,
+    // alignSelf: "flex-end",
+    // padding: 10,
   },
   closeButtonText: {
     fontSize: 24,
@@ -158,12 +224,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 20,
     textAlign: "center",
     color: "#2C3E50",
   },
   inputContainer: {
-    marginBottom: 15,
+    marginBottom: 10,
   },
   rowContainer: {
     flexDirection: "row",
@@ -173,17 +238,17 @@ const styles = StyleSheet.create({
     width: "48%",
   },
   label: {
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: 12,
+    marginBottom: 2,
     color: "#34495E",
   },
   input: {
     height: 40,
     borderColor: "#BDC3C7",
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 15,
     paddingHorizontal: 10,
-    fontSize: 16,
+    fontSize: 14,
     backgroundColor: "#FFFFFF",
   },
   loader: {
@@ -200,6 +265,11 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  errorText: {
+    color: "#E74C3C",
+    fontSize: 14,
+    marginTop: 5,
   },
 })
 

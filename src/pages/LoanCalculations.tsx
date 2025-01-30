@@ -102,7 +102,7 @@ export default function LoanCalculations() {
 
       <View style={{ marginBottom: 0 ,justifyContent: "center", alignItems: "center"}}>
          <Text >Amortization Schedule</Text>
-         <Text >Swipe Left and Right to view the whole table</Text>
+         <Text style={{}}>Swipe Left and Right to view the whole table</Text>
       </View>
       {loanData.amortization_schedule && loanData.amortization_schedule.length > 0 && (
         <Table data={loanData.amortization_schedule} paymentFrequency={formData.payment_frequency} />

@@ -53,3 +53,14 @@ export interface AppContextType {
   calculateLoan: (formData: LoanFormData) => Promise<void>
 }
 
+export interface Option {
+  label: string
+  value: string
+}
+
+export interface CustomDropdownProps {
+  options: Option[]
+  selectedValue: string
+  onValueChange: (value: string) => void
+  placeholder: string
+}
