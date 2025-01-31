@@ -23,7 +23,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch("http://localhost:8000/api/calculate/", {
+      const response = await fetch("https://loan-api-production.up.railway.app/api/calculate/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
